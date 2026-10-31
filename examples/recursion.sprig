@@ -1,0 +1,8 @@
+fn factorial(number):
+    when number <= 1:
+        return 1
+    end
+    return number * factorial(number - 1)
+end
+
+print(factorial(5))

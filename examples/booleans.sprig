@@ -1,0 +1,8 @@
+let ready = true
+let tired = false
+print(ready, tired)
+print(ready and not tired)
+print(tired or ready)
+print(5 > 3, 5 == 3, true == 1)
+# The right side is skipped when the answer is already known.
+print(false and missing, true or missing)

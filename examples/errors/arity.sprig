@@ -1,0 +1,5 @@
+fn add(left, right):
+    return left + right
+end
+
+print(add(1))

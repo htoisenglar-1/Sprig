@@ -1,0 +1,2 @@
+# A first Sprig program.
+print("Hello, Sprig!")

@@ -1,0 +1,8 @@
+let name = "outside"
+fn greet():
+    let name = "inside"
+    print(name)
+end
+
+greet()
+print(name)

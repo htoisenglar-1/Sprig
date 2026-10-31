@@ -1,0 +1,7 @@
+fn add(left, right):
+    return left + right
+end
+
+print(add(2, 3))
+let operation = add
+print(operation(4, 6))

@@ -1,0 +1,11 @@
+fn make_counter():
+    let count = 0
+    fn next():
+        count = count + 1
+        return count
+    end
+    return next
+end
+
+let counter = make_counter()
+print(counter(), counter())

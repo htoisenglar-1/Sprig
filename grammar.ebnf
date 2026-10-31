@@ -1,0 +1,70 @@
+(* Sprig 2. Keywords and names are case-sensitive.
+   Whitespace and comments are discarded, except newlines.
+   EOF is the end of the source. A final statement needs no newline. *)
+
+program       = { NEWLINE | line }, [ statement ], EOF ;
+line          = statement, NEWLINE ;
+body          = NEWLINE, { NEWLINE | line } ;
+
+statement     = declaration | assignment | function | return
+              | selection | while | repeat | expression ;
+declaration   = "let", NAME, "=", expression ;
+assignment    = NAME, "=", expression ;
+function      = "fn", NAME, "(", [ parameters ], ")", ":", body, "end" ;
+parameters    = NAME, { ",", NAME } ;
+return        = "return", [ expression ] ;
+selection     = "when", expression, ":", body,
+                [ "otherwise", ":", body ], "end" ;
+while         = "while", expression, ":", body, "end" ;
+repeat        = "repeat", expression, ":", body, "end" ;
+
+expression    = disjunction ;
+disjunction   = conjunction, { "or", conjunction } ;
+conjunction   = negation, { "and", negation } ;
+negation      = "not", negation | comparison ;
+comparison    = sum, [ comparison-op, sum ] ;
+comparison-op = "==" | "!=" | "<" | "<=" | ">" | ">=" ;
+sum           = product, { ( "+" | "-" ), product } ;
+product       = unary, { ( "*" | "/" | "%" ), unary } ;
+unary         = "-", unary | call ;
+call          = primary, { "(", [ arguments ], ")" } ;
+arguments     = expression, { ",", expression } ;
+primary       = NUMBER | STRING | "true" | "false" | "nil" | NAME
+              | "(", expression, ")" ;
+
+(* Lexical forms. A NAME cannot be a reserved keyword.
+   Numbers must be finite; a negative sign is the unary operator above.
+   No exponent notation, single-quoted strings, or multiline expressions. *)
+
+NUMBER        = digit, { digit }, [ ".", digit, { digit } ] ;
+NAME          = letter, { letter | digit } ;
+letter        = "a" ... "z" | "A" ... "Z" | "_" ;
+digit         = "0" ... "9" ;
+STRING        = '"', { string-char | escape }, '"' ;
+escape        = '\', ( '"' | '\' | "n" | "t" | "r" ) ;
+string-char   = ? any character except double quote, backslash, CR, or LF ? ;
+NEWLINE       = LF | CR, [ LF ] ;
+comment       = "#", { ? any character except CR or LF ? } ;
+space         = " " | TAB ;
+LF            = ? U+000A line feed ? ;
+CR            = ? U+000D carriage return ? ;
+TAB           = ? U+0009 tab ? ;
+
+(* Reserved keywords:
+   let fn return when otherwise end while repeat true false nil and or not
+
+   Context and runtime rules:
+   - return is only accepted inside a function body.
+   - Function parameter names must be distinct.
+   - let and fn cannot redeclare a local name.
+   - Assignments require an existing declaration.
+   - Conditions and logical operators require booleans.
+   - repeat requires a non-negative integer, evaluated once.
+   - Blocks share scope; function calls create a lexical local scope.
+   - Functions require their exact number of arguments.
+   - Arithmetic is numeric, except string + string.
+   - Ordering is numeric; equality does not equate booleans and numbers.
+   - Comparisons do not chain. Parentheses may nest comparisons.
+   - Comments can follow code and do not consume the terminating newline.
+   - Blank lines and empty block bodies are allowed.
+*)

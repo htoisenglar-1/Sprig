@@ -1,0 +1,7 @@
+let score = 85
+let passed = score >= 75
+when passed:
+    print("Passed")
+otherwise:
+    print("Try again")
+end

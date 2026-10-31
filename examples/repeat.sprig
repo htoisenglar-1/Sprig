@@ -1,0 +1,6 @@
+let times = 3
+repeat times:
+    print("Sprig")
+    times = times - 1
+end
+print(times)
