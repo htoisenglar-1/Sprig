@@ -1,0 +1,8 @@
+let values = [2, 4]
+append(values, 6)
+print(values)
+print(pop(values))
+print(values)
+values[0] = 9
+print(len(values))
+print(values == [9, 4])

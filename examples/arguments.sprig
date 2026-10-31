@@ -1,0 +1,8 @@
+# Run: python3 -m sprig examples/arguments.sprig Ada 3
+when len(args) < 2:
+    print("Usage: arguments.sprig NAME COUNT")
+otherwise:
+    for index in range(number(args[1])):
+        print(args[0])
+    end
+end

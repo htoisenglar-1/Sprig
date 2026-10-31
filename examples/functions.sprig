@@ -1,0 +1,14 @@
+# A recursive function has its own parameter binding for each call.
+fn factorial(value):
+    when value <= 1:
+        return 1
+    end
+    return value * factorial(value - 1)
+end
+
+fn nothing():
+    return
+end
+
+print(factorial(5))
+print(nothing())

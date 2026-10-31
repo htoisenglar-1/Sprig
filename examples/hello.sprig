@@ -1,0 +1,12 @@
+# My first Sprig program
+let name = "Crystal"
+let score = 8 + 2 * 3
+
+print("Hello,", name)
+print(score)
+
+when score >= 10:
+    print("Goal reached!")
+otherwise:
+    print("Keep practicing!")
+end

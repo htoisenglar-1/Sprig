@@ -1,0 +1,15 @@
+# Each call makes a separate environment for count.
+fn make_counter():
+    let count = 0
+    fn next():
+        count = count + 1
+        return count
+    end
+    return next
+end
+
+let first = make_counter()
+let second = make_counter()
+print(first())
+print(first())
+print(second())
