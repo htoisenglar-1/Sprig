@@ -1,4 +1,4 @@
-(* Sprig 2. Keywords and names are case-sensitive.
+(* Sprig v2. Keywords and names are case-sensitive.
    Whitespace and comments are discarded, except newlines.
    EOF is the end of the source. A final statement needs no newline. *)
 

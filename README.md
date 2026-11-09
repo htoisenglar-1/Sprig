@@ -1,4 +1,4 @@
-# Sprig 2
+# Sprig v2
 
 Sprig is a small language for learning how programs work. Version 2 keeps the interpreter in one Python file, with no extra packages. It reads Sprig source using its own lexer, parser, abstract syntax tree (AST), and interpreter.
 

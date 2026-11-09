@@ -1,4 +1,4 @@
-"""Sprig 2: a small lexer, parser, and tree-walking interpreter. Python 3.10+."""
+"""Sprig v2: a small lexer, parser, and tree-walking interpreter. Python 3.10+."""
 
 import argparse
 import math
