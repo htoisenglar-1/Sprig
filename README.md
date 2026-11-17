@@ -168,5 +168,3 @@ The implementation is in `sprig.py`: source text becomes tokens, the parser buil
 The complete syntax is in `grammar.ebnf`. This version uses dynamic value types, lexical function scope, and structured control flow. It keeps functions and recursion from the project reference's core requirements. Its three standard features are a second loop (`repeat`), first-class functions and closures, and an interactive prompt.
 
 Version 2 focuses on a small implementation. Lists, indexing, `for`, `elif`, `break`, `continue`, classes, modules, and extra built-in functions are omitted. Existing Sprig programs using these features need to be simplified before running here.
-
-This is an AI-assisted learning implementation. Review the source and grammar so you can explain how each part works. The course's separate report, slides, and presentation are outside this code update.
